@@ -3,11 +3,11 @@ package dao.daoImpl;
 import dao.UserDao;
 import db.Database;
 import model.User;
-
 import java.util.List;
 
 public class UserDaoImpl implements UserDao {
-    Database database = new Database();
+    private final Database database = new Database();
+    private long nextId = 1;
 
     @Override
     public List<User> getAllUsers() {
@@ -20,8 +20,10 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
-    public User update(long id, User newUser) {
-        return database.update(id, newUser);
+
+    public void addUser(User user) {
+        user.setId(nextId++);
+        database.addUser(user);
     }
 
     @Override

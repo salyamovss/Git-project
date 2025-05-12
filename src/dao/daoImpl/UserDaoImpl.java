@@ -18,4 +18,15 @@ public class UserDaoImpl implements UserDao {
     public User getById(long id) {
         return database.getUserById(id);
     }
+
+    @Override
+    public User update(long id, User newUser) {
+        return database.update(id, newUser);
+    }
+
+    @Override
+    public String delete(User user) {
+        database.deleteUser(user);
+        return "Success!";
+    }
 }

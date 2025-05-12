@@ -24,6 +24,19 @@ public class Database {
         return null;
     }
 
+    public User update (long id, User newUser) {
+        for (User user : users) {
+            if (user.getId() == id) {
+                user.setName(newUser.getName());
+                user.setEmail(newUser.getEmail());
+                user.setPassword(newUser.getPassword());
+                return user;
+            }
+        }
+
+        return null;
+    }
+
     public boolean deleteUser(User user) {
         return users.remove(user);
     }

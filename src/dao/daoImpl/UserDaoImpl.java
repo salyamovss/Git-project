@@ -20,8 +20,15 @@ public class UserDaoImpl implements UserDao {
     }
 
     @Override
+
     public void addUser(User user) {
         user.setId(nextId++);
         database.addUser(user);
+    }
+
+    @Override
+    public String delete(User user) {
+        database.deleteUser(user);
+        return "Success!";
     }
 }
